@@ -7,7 +7,6 @@ import ReactMarkdown from "react-markdown"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import "../documentation.css"
 
 interface PageProps {
   params: Promise<{ slug: string }>
