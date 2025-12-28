@@ -1,0 +1,68 @@
+---
+title: Expanding Fields
+description: Learn how to expand related fields in API responses
+category: GUIDES
+order: 3
+---
+
+# Expanding Fields
+
+By default, our API returns minimal data to keep responses fast. You can expand related fields to include additional data in a single request.
+
+## Using the Expand Parameter
+
+Add the `expand` query parameter to include related data:
+
+```bash
+curl "https://api.yourcompany.com/v1/orders/123?expand=customer,products" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+```javascript
+const response = await fetch(
+  'https://api.yourcompany.com/v1/orders/123?expand=customer,products',
+  {
+    headers: {
+      'Authorization': `Bearer ${YOUR_API_KEY}`
+    }
+  }
+)
+```
+
+```python
+import requests
+
+params = {'expand': 'customer,products'}
+response = requests.get(
+  'https://api.yourcompany.com/v1/orders/123',
+  headers={'Authorization': f'Bearer {YOUR_API_KEY}'},
+  params=params
+)
+```
+
+## Available Expansions
+
+Different endpoints support different expansions:
+
+| Endpoint | Available Expansions |
+|----------|---------------------|
+| /orders  | customer, products, shipping_address |
+| /products | category, variants, images |
+| /customers | orders, addresses, payment_methods |
+
+## Nested Expansions
+
+You can expand nested relationships using dot notation:
+
+```bash
+curl "https://api.yourcompany.com/v1/orders/123?expand=customer.addresses,products.category" \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Performance Considerations
+
+- Expanding fields increases response size and time
+- Only expand fields you need
+- Use pagination with expansions to avoid large responses
+- Some expansions may count against rate limits differently
+```

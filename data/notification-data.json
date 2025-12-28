@@ -1,0 +1,39 @@
+{
+  "notifications": [
+    {
+      "id": "1",
+      "title": "New Order Received",
+      "message": "Order #12345 has been placed by John Doe",
+      "time": "2 minutes ago",
+      "read": false
+    },
+    {
+      "id": "2",
+      "title": "Product Stock Low",
+      "message": "Premium Headphones stock is running low (5 units remaining)",
+      "time": "1 hour ago",
+      "read": false
+    },
+    {
+      "id": "3",
+      "title": "New User Registration",
+      "message": "Sarah Smith has created a new account",
+      "time": "3 hours ago",
+      "read": true
+    },
+    {
+      "id": "4",
+      "title": "Payment Completed",
+      "message": "Payment of $299.99 received for Order #12340",
+      "time": "5 hours ago",
+      "read": true
+    },
+    {
+      "id": "5",
+      "title": "System Update",
+      "message": "New features have been deployed to production",
+      "time": "1 day ago",
+      "read": true
+    }
+  ]
+}

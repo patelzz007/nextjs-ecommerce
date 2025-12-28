@@ -1,0 +1,171 @@
+{
+  "header": {
+    "title": "STORE",
+    "subtitle": "Admin Portal"
+  },
+  "sections": [
+    {
+      "title": "DASHBOARD",
+      "items": [
+        {
+          "title": "My Dashboard",
+          "icon": "LayoutDashboard",
+          "url": "/admin",
+          "roles": ["superadmin", "merchant"],
+          "disabled": false
+        },
+        {
+          "title": "Portfolio",
+          "icon": "PieChart",
+          "url": "/admin/portfolio",
+          "roles": ["superadmin", "merchant"],
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "title": "ECOMMERCE",
+      "items": [
+        {
+          "title": "Products",
+          "icon": "Package",
+          "url": "/admin/products",
+          "roles": ["superadmin", "merchant"],
+          "disabled": false,
+          "children": [
+            {
+              "title": "All Products",
+              "icon": "List",
+              "url": "/admin/products/all",
+              "roles": ["superadmin", "merchant"],
+              "disabled": false
+            },
+            {
+              "title": "Categories",
+              "icon": "FolderTree",
+              "url": "/admin/products/categories",
+              "roles": ["superadmin", "merchant"],
+              "disabled": false,
+              "children": [
+                {
+                  "title": "Electronics",
+                  "icon": "Laptop",
+                  "url": "/admin/products/categories/electronics",
+                  "roles": ["superadmin", "merchant"],
+                  "disabled": false,
+                  "children": [
+                    {
+                      "title": "Mobile Devices",
+                      "icon": "Smartphone",
+                      "url": "/admin/products/categories/electronics/mobile",
+                      "roles": ["superadmin", "merchant"],
+                      "disabled": false,
+                      "children": [
+                        {
+                          "title": "Smartphones",
+                          "icon": "Phone",
+                          "url": "/admin/products/categories/electronics/mobile/smartphones",
+                          "roles": ["superadmin", "merchant"],
+                          "disabled": false
+                        },
+                        {
+                          "title": "Tablets",
+                          "icon": "Tablet",
+                          "url": "/admin/products/categories/electronics/mobile/tablets",
+                          "roles": ["superadmin", "merchant"],
+                          "disabled": false
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Computers",
+                      "icon": "Monitor",
+                      "url": "/admin/products/categories/electronics/computers",
+                      "roles": ["superadmin", "merchant"],
+                      "disabled": false
+                    }
+                  ]
+                },
+                {
+                  "title": "Accessories",
+                  "icon": "Cable",
+                  "url": "/admin/products/categories/accessories",
+                  "roles": ["superadmin", "merchant"],
+                  "disabled": false
+                }
+              ]
+            },
+            {
+              "title": "Inventory",
+              "icon": "Package2",
+              "url": "/admin/products/inventory",
+              "roles": ["superadmin", "merchant"],
+              "disabled": false
+            }
+          ]
+        },
+        {
+          "title": "Orders",
+          "icon": "ShoppingCart",
+          "url": "/admin/orders",
+          "roles": ["superadmin", "merchant"],
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "title": "ANALYTICS",
+      "items": [
+        {
+          "title": "Analytics",
+          "icon": "BarChart3",
+          "url": "/admin/analytics",
+          "roles": ["superadmin", "merchant"],
+          "disabled": false
+        }
+      ]
+    },
+    {
+      "title": "USER MANAGEMENT",
+      "items": [
+        {
+          "title": "Users",
+          "icon": "Users",
+          "url": "/admin/users",
+          "roles": ["superadmin"],
+          "disabled": false
+        },
+        {
+          "title": "Merchants",
+          "icon": "Store",
+          "url": "/admin/merchants",
+          "roles": ["superadmin"],
+          "disabled": false
+        }
+      ]
+    }
+  ],
+  "bottomItems": [
+    {
+      "title": "My Profile",
+      "icon": "User",
+      "url": "/admin/profile",
+      "roles": ["superadmin", "merchant", "user"],
+      "disabled": false
+    },
+    {
+      "title": "Settings",
+      "icon": "Settings",
+      "url": "/admin/settings",
+      "roles": ["superadmin", "merchant"],
+      "disabled": false
+    },
+    {
+      "title": "Help & Support",
+      "icon": "HelpCircle",
+      "url": "/admin/help",
+      "roles": ["superadmin", "merchant", "user"],
+      "disabled": false
+    }
+  ]
+}

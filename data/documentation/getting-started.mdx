@@ -1,0 +1,93 @@
+---
+title: "Getting Started"
+description: "Start building with our API in under five minutes"
+order: 1
+icon: "rocket"
+category: "guides"
+---
+
+# Getting Started
+
+Welcome to our API documentation. This guide will help you get started with integrating our API into your application.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- An API key from your dashboard
+- Node.js 16+ or Python 3.8+ installed
+- Basic knowledge of REST APIs
+
+## Quick Start
+
+Follow these steps to make your first API call:
+
+### 1. Install the SDK
+
+```bash
+npm install @your-company/api-sdk
+```
+
+```python
+pip install your-company-sdk
+```
+
+### 2. Initialize the Client
+
+```javascript
+import { APIClient } from '@your-company/api-sdk'
+
+const client = new APIClient({
+  apiKey: process.env.API_KEY
+})
+```
+
+```python
+from your_company import APIClient
+
+client = APIClient(api_key=os.environ.get('API_KEY'))
+```
+
+### 3. Make Your First Request
+
+```javascript
+const response = await client.products.list({
+  limit: 10,
+  status: 'published'
+})
+
+console.log(response.data)
+```
+
+```python
+response = client.products.list(
+    limit=10,
+    status='published'
+)
+
+print(response.data)
+```
+
+## Authentication
+
+All API requests require authentication using an API key. Include your API key in the request headers:
+
+```bash
+curl https://api.yourcompany.com/v1/products \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+## Rate Limiting
+
+Our API implements rate limiting to ensure fair usage:
+
+- **Free tier**: 100 requests per minute
+- **Pro tier**: 1,000 requests per minute
+- **Enterprise**: Custom limits
+
+## Need Help?
+
+- Check out our [API Reference](/documentation/api-reference)
+- Join our [Discord community](https://discord.gg/yourcompany)
+- Email us at support@yourcompany.com
+```

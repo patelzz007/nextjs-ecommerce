@@ -1,0 +1,124 @@
+---
+title: Admin API
+category: Guides
+order: 2
+---
+
+# Admin API
+
+The Admin API is designed for administrative operations and management of your e-commerce platform. It provides endpoints for managing products, orders, customers, and other backend operations.
+
+## Overview
+
+The Admin API requires elevated permissions and is typically used by:
+
+- Admin dashboards and panels
+- Internal management tools
+- Automated backend processes
+- Integration with third-party admin tools
+
+All Admin API endpoints are prefixed with `/admin`. Authentication with admin credentials is required for all requests.
+
+## Authentication
+
+Admin API requests must include an admin authentication token in the `Authorization` header:
+
+```bash
+curl https://api.yourcompany.com/admin/products \
+  -H "Authorization: Bearer YOUR_ADMIN_TOKEN"
+```
+
+```javascript
+const response = await fetch('https://api.yourcompany.com/admin/products', {
+  headers: {
+    'Authorization': `Bearer ${YOUR_ADMIN_TOKEN}`
+  }
+})
+```
+
+```python
+import requests
+
+headers = {'Authorization': f'Bearer {YOUR_ADMIN_TOKEN}'}
+response = requests.get('https://api.yourcompany.com/admin/products', headers=headers)
+```
+
+## Base URL
+
+During development, the Admin API endpoints will be available under the path `/admin`:
+
+`http://localhost:9000/admin`
+
+For production, replace with your backend URL.
+
+## Permissions
+
+Admin API access requires specific permissions based on the operation:
+
+1. **Read permissions** - View and retrieve data
+2. **Write permissions** - Create and update resources
+3. **Delete permissions** - Remove resources
+4. **Super admin permissions** - Full access to all operations
+
+## Rate Limiting
+
+Admin API requests are subject to rate limiting to prevent abuse:
+
+- **100 requests per minute** for standard operations
+- **500 requests per minute** for super admin users
+- Rate limit headers are included in all responses
+
+## Common Operations
+
+### Managing Products
+
+Create, update, and delete products in your catalog.
+
+### Processing Orders
+
+View and manage customer orders, update order statuses, and process refunds.
+
+### Customer Management
+
+Access customer data, manage customer accounts, and view customer history.
+
+### Analytics & Reports
+
+Generate reports, view analytics data, and export information for analysis.
+
+## Error Handling
+
+Admin API errors include detailed information for debugging:
+
+```json
+{
+  "error": {
+    "code": "PERMISSION_DENIED",
+    "message": "You do not have permission to perform this action",
+    "details": {
+      "required_permission": "products.write",
+      "current_permissions": ["products.read"]
+    }
+  }
+}
+```
+
+## Best Practices
+
+1. **Use appropriate permissions** - Grant only the permissions needed for each admin user
+2. **Rotate tokens regularly** - Update admin tokens on a regular schedule
+3. **Log all operations** - Keep audit logs of all admin actions
+4. **Validate input** - Always validate and sanitize input data
+5. **Use pagination** - Limit result sets to improve performance
+
+## Getting Started
+
+To start using the Admin API:
+
+1. Obtain admin credentials from your account settings
+2. Generate an admin API token
+3. Make your first authenticated request
+4. Explore the available endpoints and operations
+
+For detailed endpoint documentation, refer to the specific endpoint pages in this documentation.
+```

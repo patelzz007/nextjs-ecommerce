@@ -1,0 +1,65 @@
+---
+title: HTTP Compression
+description: Learn about HTTP compression support in our API
+category: GUIDES
+order: 2
+---
+
+# HTTP Compression
+
+Our API supports HTTP compression to reduce bandwidth usage and improve response times.
+
+## Supported Compression Methods
+
+We support the following compression algorithms:
+
+- **gzip** - Most widely supported compression method
+- **deflate** - Alternative compression method
+- **br** (Brotli) - Modern compression with better ratios
+
+## Using Compression
+
+To enable compression, include the `Accept-Encoding` header in your request:
+
+```bash
+curl https://api.yourcompany.com/v1/products \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Accept-Encoding: gzip, deflate, br"
+```
+
+```javascript
+const response = await fetch('https://api.yourcompany.com/v1/products', {
+  headers: {
+    'Authorization': `Bearer ${YOUR_API_KEY}`,
+    'Accept-Encoding': 'gzip, deflate, br'
+  }
+})
+```
+
+```python
+import requests
+
+headers = {
+    'Authorization': f'Bearer {YOUR_API_KEY}',
+    'Accept-Encoding': 'gzip, deflate, br'
+}
+response = requests.get('https://api.yourcompany.com/v1/products', headers=headers)
+```
+
+## Compression Benefits
+
+Using compression can reduce response sizes by 60-80% on average:
+
+| Response Type | Uncompressed | Compressed | Savings |
+|---------------|--------------|------------|---------|
+| JSON (small)  | 2 KB         | 0.5 KB     | 75%     |
+| JSON (large)  | 100 KB       | 20 KB      | 80%     |
+| Text          | 50 KB        | 15 KB      | 70%     |
+
+## Best Practices
+
+- Always include `Accept-Encoding` header for better performance
+- Most HTTP clients handle compression automatically
+- Check the `Content-Encoding` response header to verify compression
+- Use Brotli when available for best compression ratios
+```
