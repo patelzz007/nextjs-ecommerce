@@ -135,7 +135,7 @@ importers:
         specifier: 1.27.6
         version: 1.27.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@tanstack/react-query':
-        specifier: ^5.90.12
+        specifier: ^5.90.13
         version: 5.90.13(react@19.2.3)
       '@tanstack/react-table':
         specifier: 8.21.3
@@ -198,7 +198,7 @@ importers:
         specifier: ^13.1.0
         version: 13.1.0(@types/node@25.0.3)
       jotai:
-        specifier: ^2.16.0
+        specifier: ^2.16.1
         version: 2.16.1(@babel/core@7.28.5)(@babel/template@7.27.2)(@types/react@19.2.7)(react@19.2.3)
       jotai-tanstack-query:
         specifier: ^0.11.0
