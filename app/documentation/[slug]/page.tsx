@@ -123,8 +123,8 @@ export default async function DocumentationPage({ params }: PageProps) {
     <div className="flex min-h-screen">
       <DocSidebar />
 
-      <main className="w-full xl:ml-80 xl:mr-80 px-4 sm:px-6 md:px-8 py-8 pt-20 xl:pt-8">
-        <div className="max-w-4xl mx-auto">
+      <main className="w-full xl:ml-80 xl:mr-80 px-4 sm:px-6 md:px-8 py-8">
+        <div className="max-w-5xl mx-auto">
           <article className="prose prose-slate max-w-none">
             <div className="mb-10">
               <p className="text-sm text-indigo-600 font-semibold mb-3 uppercase tracking-wider">
@@ -142,7 +142,7 @@ export default async function DocumentationPage({ params }: PageProps) {
                   href={`/documentation/${previousDoc.slug}`}
                   className="group flex items-center gap-3 p-4 rounded-lg border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/50 transition-all duration-200"
                 >
-                  <ChevronLeft className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors flex-shrink-0" />
+                  <ChevronLeft className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors shrink-0" />
                   <div className="flex-1 text-left">
                     <div className="text-xs text-slate-500 mb-1 font-medium">Previous</div>
                     <div className="text-sm font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
@@ -165,7 +165,7 @@ export default async function DocumentationPage({ params }: PageProps) {
                       {nextDoc.metadata.title}
                     </div>
                   </div>
-                  <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors flex-shrink-0" />
+                  <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-indigo-600 transition-colors shrink-0" />
                 </Link>
               ) : null}
             </div>
