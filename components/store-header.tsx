@@ -9,6 +9,14 @@ import { Badge } from "@/components/ui/badge"
 import { useState, useEffect } from "react"
 import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function StoreHeader() {
   const { user, logout } = useAuth()
@@ -73,18 +81,74 @@ export function StoreHeader() {
                 <span className="sr-only">Search</span>
               </Button>
 
-              {/* Account Icon - Desktop */}
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="hidden lg:flex h-10 w-10 text-gray-700 hover:text-gray-900"
-              >
-                <Link href={user ? "/account" : "/login"}>
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">Account</span>
-                </Link>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hidden lg:flex h-10 w-10 text-gray-700 hover:text-gray-900"
+                  >
+                    <User className="h-5 w-5" />
+                    <span className="sr-only">Account</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  {user ? (
+                    <>
+                      <DropdownMenuLabel>
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-sm font-medium leading-none">{user.name}</p>
+                          <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
+                        </div>
+                      </DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem asChild>
+                        <Link href="/account" className="cursor-pointer">
+                          <UserCircle2 className="mr-2 h-4 w-4" />
+                          <span>My Account</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/orders" className="cursor-pointer">
+                          <Package className="mr-2 h-4 w-4" />
+                          <span>My Orders</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      {(user.role === "superadmin" || user.role === "merchant") && (
+                        <DropdownMenuItem asChild>
+                          <Link href="/admin" className="cursor-pointer">
+                            <LayoutDashboard className="mr-2 h-4 w-4" />
+                            <span>Admin Dashboard</span>
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        onClick={logout}
+                        className="cursor-pointer text-destructive focus:text-destructive"
+                      >
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Logout</span>
+                      </DropdownMenuItem>
+                    </>
+                  ) : (
+                    <>
+                      <DropdownMenuItem asChild>
+                        <Link href="/login" className="cursor-pointer">
+                          <User className="mr-2 h-4 w-4" />
+                          <span>Sign In</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/login" className="cursor-pointer">
+                          <UserCircle2 className="mr-2 h-4 w-4" />
+                          <span>Create Account</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  )}
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               {/* Cart Icon with Badge */}
               <Button

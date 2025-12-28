@@ -24,58 +24,58 @@ Follow these steps to make your first API call:
 
 ### 1. Install the SDK
 
-```bash
+\`\`\`bash
 npm install @your-company/api-sdk
-```
+\`\`\`
 
-```python
+\`\`\`python
 pip install your-company-sdk
-```
+\`\`\`
 
 ### 2. Initialize the Client
 
-```javascript
+\`\`\`javascript
 import { APIClient } from '@your-company/api-sdk'
 
 const client = new APIClient({
   apiKey: process.env.API_KEY
 })
-```
+\`\`\`
 
-```python
+\`\`\`python
 from your_company import APIClient
 
 client = APIClient(api_key=os.environ.get('API_KEY'))
-```
+\`\`\`
 
 ### 3. Make Your First Request
 
-```javascript
+\`\`\`javascript
 const response = await client.products.list({
   limit: 10,
   status: 'published'
 })
 
 console.log(response.data)
-```
+\`\`\`
 
-```python
+\`\`\`python
 response = client.products.list(
     limit=10,
     status='published'
 )
 
 print(response.data)
-```
+\`\`\`
 
 ## Authentication
 
 All API requests require authentication using an API key. Include your API key in the request headers:
 
-```bash
+\`\`\`bash
 curl https://api.yourcompany.com/v1/products \
   -H "Authorization: Bearer YOUR_API_KEY"
-```
+\`\`\`
 
 ## Rate Limiting
 
@@ -90,4 +90,4 @@ Our API implements rate limiting to ensure fair usage:
 - Check out our [API Reference](/documentation/api-reference)
 - Join our [Discord community](https://discord.gg/yourcompany)
 - Email us at support@yourcompany.com
-```
+\`\`\`

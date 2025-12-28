@@ -13,12 +13,12 @@ All list endpoints support cursor-based pagination to efficiently navigate throu
 
 Use the `limit` and `cursor` parameters:
 
-```bash
+\`\`\`bash
 curl "https://api.yourcompany.com/v1/products?limit=20" \
   -H "Authorization: Bearer YOUR_API_KEY"
-```
+\`\`\`
 
-```javascript
+\`\`\`javascript
 const response = await fetch(
   'https://api.yourcompany.com/v1/products?limit=20',
   {
@@ -30,9 +30,9 @@ const response = await fetch(
 
 const data = await response.json()
 console.log(data.next_cursor)
-```
+\`\`\`
 
-```python
+\`\`\`python
 import requests
 
 params = {'limit': 20}
@@ -44,30 +44,30 @@ response = requests.get(
 
 data = response.json()
 next_cursor = data.get('next_cursor')
-```
+\`\`\`
 
 ## Pagination Response
 
-```json
+\`\`\`json
 {
   "data": [...],
   "has_more": true,
   "next_cursor": "eyJpZCI6MTIzfQ=="
 }
-```
+\`\`\`
 
 ## Fetching Next Page
 
 Use the `next_cursor` value to fetch the next page:
 
-```bash
+\`\`\`bash
 curl "https://api.yourcompany.com/v1/products?limit=20&cursor=eyJpZCI6MTIzfQ==" \
   -H "Authorization: Bearer YOUR_API_KEY"
-```
+\`\`\`
 
 ## Pagination Limits
 
 - Default limit: 10 items
 - Maximum limit: 100 items
 - Cursors expire after 24 hours
-```
+\`\`\`
