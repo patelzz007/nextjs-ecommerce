@@ -4,7 +4,7 @@ import type React from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { ChevronRight } from "lucide-react"
 import { useState, useEffect } from "react"
-import sidebarMenu from "@/lib/admin-menu.json"
+import sidebarMenu from "@/data/admin-menu.json"
 import { useSidebar } from "@/stores/sidebar-store" // Import from Zustand store instead of context
 import { useAuth } from "@/lib/auth-context"
 import { usePermissions } from "@/lib/permissions-context"
