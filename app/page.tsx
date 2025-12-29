@@ -28,14 +28,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {/* Women */}
-            <Link href="/products?category=women" className="group relative aspect-[4/5] overflow-hidden rounded-sm">
+            <Link href="/products?category=women" className="group relative aspect-4/5 overflow-hidden rounded-sm">
               <Image
                 src="/elegant-woman-in-minimalist-fashion--burgundy-coat.jpg"
                 alt="Women's Collection"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-serif mb-2">Women</h3>
                 <p className="text-white/80 mb-4">Effortless elegance</p>
@@ -46,14 +46,14 @@ export default function Home() {
             </Link>
 
             {/* Men */}
-            <Link href="/products?category=men" className="group relative aspect-[4/5] overflow-hidden rounded-sm">
+            <Link href="/products?category=men" className="group relative aspect-4/5 overflow-hidden rounded-sm">
               <Image
                 src="/handsome-man-in-white-t-shirt--modern-masculine-st.jpg"
                 alt="Men's Collection"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-serif mb-2">Men</h3>
                 <p className="text-white/80 mb-4">Modern classics</p>
@@ -66,7 +66,7 @@ export default function Home() {
             {/* Accessories */}
             <Link
               href="/products?category=accessories"
-              className="group relative aspect-[4/5] overflow-hidden rounded-sm"
+              className="group relative aspect-4/5 overflow-hidden rounded-sm"
             >
               <Image
                 src="/luxury-fashion-accessories--gold-jewelry--pearl-ne.jpg"
@@ -74,7 +74,7 @@ export default function Home() {
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <h3 className="text-3xl font-serif mb-2">Accessories</h3>
                 <p className="text-white/80 mb-4">Finishing touches</p>
@@ -108,7 +108,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {/* Product 1 */}
             <Link href="/products/1" className="group">
-              <div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-sm bg-slate-100">
+              <div className="relative aspect-3/4 mb-4 overflow-hidden rounded-sm bg-slate-100">
                 <Image
                   src="/elegant-orange-bomber-jacket-on-hanger--minimalist.jpg"
                   alt="Oversized Wool Blazer"
@@ -130,7 +130,7 @@ export default function Home() {
 
             {/* Product 2 */}
             <Link href="/products/2" className="group">
-              <div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-sm bg-slate-100">
+              <div className="relative aspect-3/4 mb-4 overflow-hidden rounded-sm bg-slate-100">
                 <Image
                   src="/beige-crew-neck-sweater-with-blue-graphic-print--m.jpg"
                   alt="Cashmere Crew Sweater"
@@ -155,7 +155,7 @@ export default function Home() {
 
             {/* Product 3 */}
             <Link href="/products/3" className="group">
-              <div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-sm bg-slate-100">
+              <div className="relative aspect-3/4 mb-4 overflow-hidden rounded-sm bg-slate-100">
                 <Image
                   src="/blue-checkered-three-piece-suit-on-model--elegant-.jpg"
                   alt="High-Rise Tailored Trousers"
@@ -174,7 +174,7 @@ export default function Home() {
 
             {/* Product 4 */}
             <Link href="/products/4" className="group">
-              <div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-sm bg-slate-100">
+              <div className="relative aspect-3/4 mb-4 overflow-hidden rounded-sm bg-slate-100">
                 <Image
                   src="/white-dress-shirt-with-patterned-tie-on-model--pro.jpg"
                   alt="Silk Button-Down Shirt"
@@ -210,7 +210,7 @@ export default function Home() {
       <section className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-slate-100">
+            <div className="relative aspect-4/5 rounded-sm overflow-hidden bg-slate-100">
               <Image
                 src="/fashionable-woman-in-white-top-and-striped-pants--.jpg"
                 alt="Understated Sophistication"
@@ -234,7 +234,7 @@ export default function Home() {
 
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-1 bg-slate-900 flex-shrink-0" />
+                  <div className="w-1 bg-slate-900 shrink-0" />
                   <div className="space-y-2">
                     <h3 className="font-serif text-xl text-slate-900">Sustainable Materials</h3>
                     <p className="text-slate-600 leading-relaxed">
@@ -244,7 +244,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-1 bg-slate-900 flex-shrink-0" />
+                  <div className="w-1 bg-slate-900 shrink-0" />
                   <div className="space-y-2">
                     <h3 className="font-serif text-xl text-slate-900">Artisan Craftsmanship</h3>
                     <p className="text-slate-600 leading-relaxed">
@@ -254,7 +254,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-1 bg-slate-900 flex-shrink-0" />
+                  <div className="w-1 bg-slate-900 shrink-0" />
                   <div className="space-y-2">
                     <h3 className="font-serif text-xl text-slate-900">Timeless Design</h3>
                     <p className="text-slate-600 leading-relaxed">

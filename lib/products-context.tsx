@@ -1,65 +1,70 @@
-"use client"
+"use client";
 
-import type React from "react"
+import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { MOCK_PRODUCTS, type Product } from "@/lib/mock-data";
 
-import { createContext, useContext, useState, useEffect } from "react"
-import { MOCK_PRODUCTS, type Product } from "@/lib/mock-data"
-
-interface ProductsContextType {
-  products: Product[]
-  addProduct: (product: Omit<Product, "id">) => void
-  updateProduct: (id: string, product: Partial<Product>) => void
-  deleteProduct: (id: string) => void
+interface ProductContextType {
+   products: Product[];
+   allProducts: Product[];
+   loading: boolean;
+   error: string | null;
+   filterByCategory: (category: string) => void;
 }
 
-const ProductsContext = createContext<ProductsContextType | undefined>(undefined)
+const ProductContext = createContext<ProductContextType | undefined>(undefined);
 
-export function ProductsProvider({ children }: { children: React.ReactNode }) {
-  const [products, setProducts] = useState<Product[]>([])
+export const ProductProvider = ({
+   children,
+   initialCategory = "",
+}: {
+   children: ReactNode;
+   initialCategory?: string;
+}) => {
+   const [allProducts, setAllProducts] = useState<Product[]>([]);
+   const [products, setProducts] = useState<Product[]>([]);
+   const [loading, setLoading] = useState<boolean>(true);
+   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const storedProducts = localStorage.getItem("products")
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts))
-    } else {
-      setProducts(MOCK_PRODUCTS)
-      localStorage.setItem("products", JSON.stringify(MOCK_PRODUCTS))
-    }
-  }, [])
+   useEffect(() => {
+      const fetchProducts = async () => {
+         try {
+            setLoading(true);
+            await new Promise((res) => setTimeout(res, 500)); // simulate API
+            setAllProducts(MOCK_PRODUCTS);
 
-  useEffect(() => {
-    if (products.length > 0) {
-      localStorage.setItem("products", JSON.stringify(products))
-    }
-  }, [products])
+            // Apply initial category filter if exists
+            if (initialCategory) {
+               const filtered = MOCK_PRODUCTS.filter((p) => p.category.toLowerCase() === initialCategory.toLowerCase());
+               setProducts(filtered);
+            } else setProducts(MOCK_PRODUCTS);
+         } catch (err) {
+            setError("Failed to load products");
+         } finally {
+            setLoading(false);
+         }
+      };
 
-  const addProduct = (product: Omit<Product, "id">) => {
-    const newProduct = {
-      ...product,
-      id: Date.now().toString(),
-    }
-    setProducts((prev) => [...prev, newProduct])
-  }
+      fetchProducts();
+   }, [initialCategory]);
 
-  const updateProduct = (id: string, updatedProduct: Partial<Product>) => {
-    setProducts((prev) => prev.map((p) => (p.id === id ? { ...p, ...updatedProduct } : p)))
-  }
+   const filterByCategory = (category: string) => {
+      if (!category || category.toLowerCase() === "all") {
+         setProducts(allProducts);
+      } else {
+         const filtered = allProducts.filter((p) => p.category.toLowerCase() === category.toLowerCase());
+         setProducts(filtered);
+      }
+   };
 
-  const deleteProduct = (id: string) => {
-    setProducts((prev) => prev.filter((p) => p.id !== id))
-  }
+   return (
+      <ProductContext.Provider value={{ products, allProducts, loading, error, filterByCategory }}>
+         {children}
+      </ProductContext.Provider>
+   );
+};
 
-  return (
-    <ProductsContext.Provider value={{ products, addProduct, updateProduct, deleteProduct }}>
-      {children}
-    </ProductsContext.Provider>
-  )
-}
-
-export function useProducts() {
-  const context = useContext(ProductsContext)
-  if (context === undefined) {
-    throw new Error("useProducts must be used within a ProductsProvider")
-  }
-  return context
-}
+export const useProduct = () => {
+   const context = useContext(ProductContext);
+   if (!context) throw new Error("useProduct must be used within ProductProvider");
+   return context;
+};

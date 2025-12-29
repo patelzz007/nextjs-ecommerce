@@ -97,7 +97,7 @@ export function StoreLayout({
       )}
 
       {showBreadcrumb && (
-        <div className={`bg-white border-b ${!showHero ? "pt-24 md:pt-24" : ""}`}>
+        <div className={`bg-white border-b ${!showHero ? "pt-0 md:pt-0" : ""}`}>
           <div className="container mx-auto px-4 py-3">
             <Breadcrumb />
           </div>
