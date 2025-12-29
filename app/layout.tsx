@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "./globals.css";
+
 import { AuthProvider } from "@/lib/auth-context";
 import { CartProvider } from "@/lib/cart-context";
 import { ProductProvider } from "@/lib/products-context";
@@ -13,6 +14,9 @@ import { OrdersProvider } from "@/lib/orders-context";
 import { InventoryProvider } from "@/lib/inventory-context";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { useState } from "react";
+import { QueryProvider } from "@/providers/query-provider";
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -36,30 +40,32 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
    return (
       <html lang="en" suppressHydrationWarning>
          <body className="font-sans antialiased">
-            <NuqsAdapter>
-               <ThemeProvider
-                  attribute="class"
-                  defaultTheme="light"
-                  enableSystem={false}
-                  disableTransitionOnChange
-                  forcedTheme="light"
-               >
-                  <AuthProvider>
-                     <PermissionsProvider>
-                        <ProductProvider>
+            <QueryProvider>
+               {" "}
+               <NuqsAdapter>
+                  <ThemeProvider
+                     attribute="class"
+                     defaultTheme="light"
+                     enableSystem={false}
+                     disableTransitionOnChange
+                     forcedTheme="light"
+                  >
+                     <AuthProvider>
+                        <PermissionsProvider>
+                           {/* <ProductProvider> */}
                            <InventoryProvider>
                               <OrdersProvider>
                                  <CartProvider>{children}</CartProvider>
                               </OrdersProvider>
                            </InventoryProvider>
-                        </ProductProvider>
-                     </PermissionsProvider>
-                  </AuthProvider>
-               </ThemeProvider>
-            </NuqsAdapter>
-
-            <Toaster />
-            <Analytics />
+                           {/* </ProductProvider> */}
+                        </PermissionsProvider>
+                     </AuthProvider>
+                  </ThemeProvider>
+               </NuqsAdapter>
+               <Toaster />
+               <Analytics />
+            </QueryProvider>
          </body>
       </html>
    );
